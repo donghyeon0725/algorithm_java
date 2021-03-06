@@ -1,34 +1,8 @@
 package com.company;
 
 public class LinkedList {
-    /*
-LinkedList list = new LinkedList();
-list.add("1");
-list.add("2");
-list.add("3");
-list.add("4");
-System.out.println("============");
-
-for (int i=0; i<list.size(); i++) {
-    System.out.println((String)list.get(i));
-}
-System.out.println("============");
-
-//System.out.println(test.size());
-list.remove(0);
-System.out.println("============");
-
-for (int i=0; i<list.size(); i++) {
-    System.out.println((String)list.get(i));
-}
-=> 사용방법
-
-    * */
-    private Node node;
+    private Node head;
     public LinkedList() {
-        if(null == node) {
-            node = new Node("");
-        }
     }
 
     public class Node {
@@ -46,7 +20,7 @@ for (int i=0; i<list.size(); i++) {
     }
 
     private Node node(int k) {
-        Node result = this.node;
+        Node result = this.head;
         // 첫 노드를 기준으로 삼는다
         for (int t=0; t<k; t++) {
             result = (Node)result.next;
@@ -55,9 +29,13 @@ for (int i=0; i<list.size(); i++) {
     }
 
     public int size() {
-        int result = 0;
+        if (this.head == null) {
+            return 0;
+        }
+
+        int result = 1;
         // 첫 노드를 기준으로 삼는다
-        Node lastNode = this.node;
+        Node lastNode = this.head;
         // 첫 노드를 기준 다음이 없을 때까지 찾는다.
         while(lastNode.next != null) {
             result++;
@@ -67,9 +45,29 @@ for (int i=0; i<list.size(); i++) {
     }
 
     public void add(Object data) {
-        Node lastNode = node(this.size());
+        if (this.size() == 0) {
+            this.head = new Node(data);
+            return;
+        }
+
+        Node lastNode = node(this.size()-1);
         Node newNode = new Node(data);
         lastNode.next = newNode;
+    }
+
+    public void add(int index, Object data) {
+        // 해더를 변경하는 작업을 해준다.
+        if (index == 0) {
+            Node curNode = (Node)this.head;
+            this.head = new Node(data);
+            this.head.next = curNode;
+            return;
+        }
+        Node prevNode = node(index-1);
+        Node nextNode = (Node)prevNode.next;
+        Node newNode = new Node(data);
+        prevNode.next = newNode;
+        newNode.next = nextNode;
     }
 
     // 제거
@@ -77,11 +75,17 @@ for (int i=0; i<list.size(); i++) {
         if (i < 0) {
             return;
         }
-        Node target = this.node;    // 제거할 노드
+        if (i == 0) {
+            Node nextNode = (Node)this.head.next;
+            this.head = nextNode;
+            return;
+        }
+
+        Node target = this.head;    // 제거할 노드
         Node before = null;         // 제거할 노드의 이전 노드
         Node after = null;          // 제거할 노드의 다음 노드
 
-        before = node(i);
+        before = node(i-1);
         //속도 개선을 위해 node 메소드 사용 X
         target = (Node)before.next;
         after = (Node)target.next;
@@ -100,9 +104,9 @@ for (int i=0; i<list.size(); i++) {
     }
 
     public Object get(int i) {
-        Node result = this.node;
+        Node result = this.head;
         // 첫 노드를 제외하고 출력하므로
-        for (int t=0; t<i+1; t++) {
+        for (int t=0; t<i; t++) {
             result = (Node)result.next;
         }
         return result.data;

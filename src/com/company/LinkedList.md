@@ -17,8 +17,8 @@ public class Node {
 ```
 자바로 노드를 구현. 노드에는 주소를 담을 next 변수와 값을 담을 data 변수가 있다.
 LinkedList 에는 기본적으로 구현해야할 메소드가 있다.
-1. add => 마지막 노드에 다음노드를 연결해준다.
-2. remove => 인덱스에 해당하는 값을 지우고 이전 노드와 다음 노드를 연결한다.
+1. add => 마지막 노드에 다음노드를 연결해준다. 처음에 추가해줄 경우 해더를 변경한다.
+2. remove => 인덱스에 해당하는 값을 지우고 이전 노드와 다음 노드를 연결한다. 처음인 경우 헤더를 변경하고 next를 변경한다.
 3. get => 인덱스에 해당하는 값을 가져온다. 
 4. size => 크기를 가져온다.
 
@@ -63,24 +63,54 @@ public int size() {
 ```java
 ...
 public void add(Object data) {
-    Node lastNode = node(this.size());
+    if (this.size() == 0) {
+        this.head = new Node(data);
+        return;
+    }
+
+    Node lastNode = node(this.size()-1);
     Node newNode = new Node(data);
     lastNode.next = newNode;
 }
 ...
 ```
 마지막 노드를 찾아 다음 노드를 이어놓는다.
+
+```java
+public void add(int index, Object data) {
+    // 해더를 변경하는 작업을 해준다.
+    if (index == 0) {
+        Node curNode = (Node)this.head;
+        this.head = new Node(data);
+        this.head.next = curNode;
+        return;
+    }
+    Node prevNode = node(index-1);
+    Node nextNode = (Node)prevNode.next;
+    Node newNode = new Node(data);
+    prevNode.next = newNode;
+    newNode.next = nextNode;
+}
+```
+원하는 인덱스에 값을 넣는다.
+
 ```java
 // 제거
 public void remove(int i) {
     if (i < 0) {
         return;
     }
-    Node target = this.node;    // 제거할 노드
+    if (i == 0) {
+        Node nextNode = (Node)this.head.next;
+        this.head = nextNode;
+        return;
+    }
+
+    Node target = this.head;    // 제거할 노드
     Node before = null;         // 제거할 노드의 이전 노드
     Node after = null;          // 제거할 노드의 다음 노드
 
-    before = node(i);
+    before = node(i-1);
     //속도 개선을 위해 node 메소드 사용 X
     target = (Node)before.next;
     after = (Node)target.next;
@@ -99,9 +129,9 @@ public void remove(int i) {
 }
 
 public Object get(int i) {
-    Node result = this.node;
+    Node result = this.head;
     // 첫 노드를 제외하고 출력하므로
-    for (int t=0; t<i+1; t++) {
+    for (int t=0; t<i; t++) {
         result = (Node)result.next;
     }
     return result.data;
@@ -124,21 +154,27 @@ System.out.println("============");
 
 //System.out.println(test.size());
 list.remove(0);
+
+list.add(1, "9");
 System.out.println("============");
 
 for (int i=0; i<list.size(); i++) {
     System.out.println((String)list.get(i));
-}
+}``
 ```
 사용법
 ```java
-# 1
-# 2
-# 3
-# 4
-# 2
-# 3
-# 4
+    ============
+    1
+    2
+    3
+    4
+    ============
+    ============
+    2
+    9
+    3
+    4
 ```
 결과
 

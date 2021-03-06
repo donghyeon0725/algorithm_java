@@ -1,17 +1,19 @@
-package com.company;
+package com.speedTest;
 
-import com.company.LinkedList;
-
-public class Main {
-
+public class LinkedListTest {
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        LInkedListImplement();
+    }
+    /**
+     * 구현한 링크드 리스트 테스트
+     */
+    private static void LInkedListImplement() {
+        com.company.LinkedList list = new com.company.LinkedList();
         list.add("1");
         list.add("2");
         list.add("3");
         list.add("4");
         System.out.println("============");
-
         for (int i=0; i<list.size(); i++) {
             System.out.println((String)list.get(i));
         }
@@ -20,14 +22,11 @@ public class Main {
         //System.out.println(test.size());
         list.remove(0);
 
-        list.add(1, "9");
+        list.add(0, "9");
         System.out.println("============");
 
         for (int i=0; i<list.size(); i++) {
             System.out.println((String)list.get(i));
         }
-
-
-
     }
 }
