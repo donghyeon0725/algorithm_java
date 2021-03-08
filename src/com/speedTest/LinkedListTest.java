@@ -1,5 +1,7 @@
 package com.speedTest;
 
+import com.linkedlist.LinkedList;
+
 public class LinkedListTest {
     public static void main(String[] args) {
         LInkedListImplement();
@@ -8,7 +10,7 @@ public class LinkedListTest {
      * 구현한 링크드 리스트 테스트
      */
     private static void LInkedListImplement() {
-        com.company.LinkedList list = new com.company.LinkedList();
+        LinkedList<String> list = new LinkedList();
         list.add("1");
         list.add("2");
         list.add("3");
@@ -28,5 +30,6 @@ public class LinkedListTest {
         for (int i=0; i<list.size(); i++) {
             System.out.println((String)list.get(i));
         }
+
     }
 }

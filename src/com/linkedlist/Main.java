@@ -1,6 +1,4 @@
-package com.company;
-
-import com.company.LinkedList;
+package com.linkedlist;
 
 public class Main {
 

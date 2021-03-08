@@ -1,19 +1,19 @@
-package com.company;
+package com.linkedlist;
 
-public class LinkedList {
-    private Node head;
+public class LinkedList<N> {
+    private Node<N> head;
     public LinkedList() {
     }
 
-    public class Node {
-        private Object data;
-        private Object next;
+    public class Node<T> {
+        private T data;
+        private T next;
 
-        public Node(Object data, Object next) {
+        public Node(T data, T next) {
             this.data = data;
             this.next = next;
         }
-        public Node(Object data) {
+        public Node(T data) {
             this.data = data;
             this.next = null;
         }
@@ -60,7 +60,7 @@ public class LinkedList {
         if (index == 0) {
             Node curNode = (Node)this.head;
             this.head = new Node(data);
-            this.head.next = curNode;
+            this.head.next = (N)curNode;
             return;
         }
         Node prevNode = node(index-1);
@@ -103,13 +103,13 @@ public class LinkedList {
         }
     }
 
-    public Object get(int i) {
+    public N get(int i) {
         Node result = this.head;
         // 첫 노드를 제외하고 출력하므로
         for (int t=0; t<i; t++) {
             result = (Node)result.next;
         }
-        return result.data;
+        return (N)result.data;
     }
 
 
