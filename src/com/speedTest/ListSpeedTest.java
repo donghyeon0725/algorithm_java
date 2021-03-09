@@ -1,6 +1,5 @@
 package com.speedTest;
 
-import jdk.dynalink.beans.StaticClass;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
