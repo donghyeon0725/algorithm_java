@@ -67,5 +67,18 @@ value를 찾아내는데는 연결 리스트를 모두 탐색해야하므로 최
 TREE 구조의 자료형이 대신 들어간다.
 ```
 
+실행
+-
+[HashTableTest.java](../speedTest/HashTableTest.java "HashTableTest.java")
+
+해시 테이블의 구조
+-
 
 ![](./hash.png)
+
+![](./hash_structure.png)
+
+![](./hashtable1.png)
+
+**키를 통해서 얻은 해시값**으로 데이터에 접근한다는 것이 핵심
+

@@ -2,7 +2,7 @@ package com.algorithm;
 
 public class Algorithm {
 
-    public static void main(String[] args) {
+    public static void sum_test() {
         long aTime = 0;
         long bTime = 0;
         int result = 0;

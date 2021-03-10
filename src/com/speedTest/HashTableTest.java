@@ -4,10 +4,8 @@ import com.hashtable.ChainingHashTable;
 import com.hashtable.LinearHashTable;
 
 public class HashTableTest {
-    public static void main(String[] args) {
 
-    }
-
+    // 충돌을 LinkedList 를 통해 해결한 해쉬테이블
     public static void ChaniningHashTest() {
         ChainingHashTable ht = new ChainingHashTable(3);
 
@@ -30,6 +28,7 @@ public class HashTableTest {
         System.out.println(ht.get("hfd")); // null
     }
 
+    // 충돌을 선형 탐색으로 해결한 해쉬테이블
     public static void LinearHashTest() {
         LinearHashTable ht = new LinearHashTable(8);
 
