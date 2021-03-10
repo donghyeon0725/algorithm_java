@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="acd4c9df-82b8-4448-a311-934c6db42cc2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algorithm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../speedTest/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../speedTest/MemoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../speedTest/TreeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/Leaf Node.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/Tree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/binary-search-tree-insertion-animation.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/binary-search-tree-sorted-array-animation.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/tree.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tree/tree의 delete 방식.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../speedTest/HashTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../speedTest/HashTableTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1pYJK9rsEm8wakruK5yX11P2kHZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="acd4c9df-82b8-4448-a311-934c6db42cc2" name="Default Changelist" comment="" />
+      <created>1615354023846</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615354023846</updated>
+      <workItem from="1615354025051" duration="5000" />
+      <workItem from="1615379449319" duration="31000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="528" y="202" key="FileChooserDialogImpl" timestamp="1615379477999">
+      <screen x="0" y="0" width="1493" height="893" />
+    </state>
+    <state x="528" y="202" key="FileChooserDialogImpl/0.0.1493.893@0.0.1493.893" timestamp="1615379477999" />
+  </component>
+</project>
