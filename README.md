@@ -21,12 +21,13 @@ ex) 요리 레시피
 
 자료구조
 -
-* [배열](./src/com/array/array.md "배열")
-* [큐](./src/com/queue/queue.md "큐")
-* [스택](./src/com/stack/stack.md "스택")
-* [링크드리스트](./src/com/linkedlist/LinkedList.md "링크드리스트")
-* [해시테이블](./src/com/hashtable/HashTable.md "해시테이블")
-* [트리](./src/com/tree/tree.md "트리")
+* [배열 (Array)](./src/com/array/array.md "배열")
+* [큐 (Queue)](./src/com/queue/queue.md "큐")
+* [스택 (Stack)](./src/com/stack/stack.md "스택")
+* [링크드리스트 (Linkedlist)](./src/com/linkedlist/LinkedList.md "링크드리스트")
+* [해시테이블 (Hashtable)](./src/com/hashtable/HashTable.md "해시테이블")
+* [트리 (Tree)](./src/com/tree/tree.md "트리")
+* [힙 (Heap)](./src/com/heap/heap.md "힙")
 
 비교표
 -
@@ -90,7 +91,7 @@ for (int i=0; i<n; i++) {
 * 실행 회수가 3n+10, n+7... 등으로 표현되는 것은 모두, n이 무한대로 큰 수라고 가정했을 때 오직 n만이 의미있는 숫자이기 때문에 O(n)  
 * 마찬가지로 3*n^2, n^2+100 모두 O(n^2)으로 표기
 
-![시간복잡도 그래프](./algorithm_timeComplexity.png)
+![시간복잡도 그래프](./image/algorithm_timeComplexity.png)
 
 
 
