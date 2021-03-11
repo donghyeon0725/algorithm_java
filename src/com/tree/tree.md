@@ -52,6 +52,12 @@ N = X^2 가 되므로 O(N) = logN 이 된다.
 ![Leaf Node 를 삭제하는 경우](./Leaf%20Node.png)
 
 ![tree의 delete 방식](./tree의%20delete%20방식.jpg)
+---
+## 시간복잡도
+* 트리의 높이(depth)를 h라고 표기한다면, O(h)
+* n개의 노드를 가진다면 h = 2logn 에 가까우므로 시간복잡도는 O(logn)
+* 한번 실행마다 50%의 탐색 수를 제거할 수 있음. 
+* 다만, 데이터가 순차적으로 쌓이는 경우 링크드리스트와 동일한 O(n)의 성능을 보여줌(ArrayList는 검색의 경우 O(n))
 
 ## 실행
 [TreeTest.java](../speedTest/TreeTest.java "TreeTest.java")
