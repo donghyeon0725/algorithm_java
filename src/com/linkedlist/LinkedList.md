@@ -27,6 +27,10 @@ Linkedlist
 * 연결을 위한 공간이 별도로 필요하기 때문에 공간 효율이 낮다.
 * 삭제를 할 때 앞 뒤 데이터의 연결이 필요 => 구현이 복잡하다.
 
+구현
+-
+[LinkedList.java](./LinkedList.java "LinkedList.java")
+
 실행
 -
 [LinkedListTest.java](../speedTest/LinkedListTest.java "LinkedListTest.java")

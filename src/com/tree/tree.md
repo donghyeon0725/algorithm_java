@@ -59,6 +59,10 @@ N = X^2 가 되므로 O(N) = logN 이 된다.
 * 한번 실행마다 50%의 탐색 수를 제거할 수 있음. 
 * 다만, 데이터가 순차적으로 쌓이는 경우 링크드리스트와 동일한 O(n)의 성능을 보여줌(ArrayList는 검색의 경우 O(n))
 
+구현
+-
+[Tree.java](./Tree.java "Tree.java")
+
 ## 실행
 [TreeTest.java](../speedTest/TreeTest.java "TreeTest.java")
 ---
