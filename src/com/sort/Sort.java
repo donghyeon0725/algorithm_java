@@ -17,6 +17,14 @@ public class Sort {
 
         //삽입정렬
         //insertSort();
+
+
+        //퀵정렬
+        quickSort(arr, 0, arr.length-1);
+
+        for (int i=0; i<arr.length; i++) {
+            System.out.println(arr[i]);
+        }
     }
     /**
      * 버블 정렬
@@ -111,6 +119,54 @@ public class Sort {
         for (int i=0; i<size; i++) {
             System.out.println(arr[i]);
         }
+    }
+
+    /**
+     * 퀵정렬
+     *
+     * 1 2 3 4 5 6 7 8 9 10
+     * 선택 정렬일 때 : O(N^2) => 100
+     *
+     * 퀵정렬은 분할 해서 하므로
+     * 1 2 3 4 5 => 5 * 5 = 25
+     * 6 7 8 9 10 => 5 * 5 = 25
+     *
+     * 쪼갤수록 더더욱 적어지기 때문에 빅-오 수치가 Log로 나옴 (나누어서 한다는 특성)
+     * 깔끔한 구현을 위해서 재귀함수를 호출하는 경우가 많음
+     *
+     */
+    public static void quickSort(int[] array, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int pivot = array[start];
+        int i=start+1,j=end;
+
+        while(i < j) { // 엇갈리면 그만 둠
+
+            while (i < end && array[i] <= pivot) {
+                // i가 end보다 작을 때까지만, array[i]가 피벗보다 작은 것을 발견하면 그만 둠
+                i++;
+            }
+            while (j > start && array[j] >= pivot) {
+                // j가 start 보다 클 때까지만, array[j]가 피벗보다 크면 그 때 그만 둠
+                j--;
+            }
+
+            if (i < j) { // 만약에 둘이 엇갈리지 않았다면
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            } else {
+                // 엇갈린 경우
+                int temp = array[start];
+                array[start] = array[j];
+                array[j] = temp;
+            }
+        }
+        quickSort(array, start, j-1);
+        quickSort(array, i, end);
     }
 
 }
