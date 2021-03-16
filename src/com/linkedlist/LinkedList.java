@@ -5,6 +5,10 @@ public class LinkedList<N> {
     public LinkedList() {
     }
 
+    /**
+     * 데이터를 노드에 저장한다.
+     * 이때, 노드에는 다음 노드의 주소를 저장하는 포인터라는 공간도 있어야 한다.
+     * */
     public class Node<T> {
         private T data;
         private T next;
@@ -19,6 +23,10 @@ public class LinkedList<N> {
         }
     }
 
+    /**
+     * 첫 노드를 기준으로 따라가며 원하는 인덱스의 노드를 찾는다.
+     * => 랜덤 엑세스도 아니고 이진 탐색도 아닌, 순차 탐색이기 때문에 탐색시간은 느리다.
+     * */
     private Node node(int k) {
         Node result = this.head;
         // 첫 노드를 기준으로 삼는다
@@ -44,6 +52,11 @@ public class LinkedList<N> {
         return result;
     }
 
+    /**
+     * 추가할 때 노드를 찾아 연결 관계만 재정의 해주면 된다.
+     * 따라서 삽입이 빈번 할 때 리스트보다 유리하다.
+     * 다만, 데이터 중간 정도에 삽입을 할 경우 탐색에 많은 시간을 쏟기 때문에 느리다.
+     * */
     public void add(Object data) {
         if (this.size() == 0) {
             this.head = new Node(data);
@@ -70,7 +83,9 @@ public class LinkedList<N> {
         newNode.next = nextNode;
     }
 
-    // 제거
+    /**
+     * 노드를 찾아 재거하고 연결관계를 재정의
+     * */
     public void remove(int i) {
         if (i < 0) {
             return;
@@ -111,8 +126,4 @@ public class LinkedList<N> {
         }
         return (N)result.data;
     }
-
-
-
-
 }

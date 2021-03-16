@@ -38,6 +38,12 @@ public class LinearHashTable<T> {
         this.hashtable = new Slot[capacity];
     }
 
+    /**
+     * 선형 탐색 기법으로 인덱스 값 충돌 문제를 해결한 해시 테이블은 해시 함수의 성능이 곧 테이블의 성능이다.
+     *
+     * 해시함수가 각각 인덱스 간의 간격이 멀어지도록 잘 설계된 함수라면 빠른 성능을 보장하겠지만,
+     * 촘촘하게 인덱스를 반환하는 함수라면 충돌이 많이 일어날 것이고 성능은 떨어지게 된다.
+     * */
     public int getHash(String key) {
         int hashCode = 0;
         for(char c : key.toCharArray()) {
@@ -51,6 +57,11 @@ public class LinearHashTable<T> {
         return hash % capacity;
     }
 
+    /**
+     * 해시값으로 얻은 인덱스를 찾아갔을 때
+     * 이미 값이 있으면 빈 공간이 나올 때까지 찾아가 값을 넣는 방법이다.
+     * 이때 해시 값을 슬롯에 같이 넣기 때문에 여전히 값은 식별이 가능하다.
+     * */
     public void put(String key, T data) {
         int hash = getHash(key);
         int index = convertToIndex(hash);
@@ -74,7 +85,11 @@ public class LinearHashTable<T> {
 
     }
 
-
+    /**
+     * 인덱스로 찾은 값에서 다음 값으로 넘겨가며 해시값을 비교해서 슬롯을 찾아온다.
+     *
+     * 값이 없다면 더이상 검색을 하지 않는다.
+     * */
     public T get(String key) {
         int hash = getHash(key);
         int index = convertToIndex(hash);
@@ -99,7 +114,11 @@ public class LinearHashTable<T> {
         return null;
     }
 
-    // 중간에 값이 삭제 되는 경우, 노드 찾기를 그만두므로, 더미데이터를 넣어줘야 한다.
+    /**
+     * 삭제할 때 중간에 값을 제거해버리면
+     *
+     * 충돌 문제로 다른 공간에 저장된 데이터에 대한 탐색을 멈춰버릴 가능성이 있기 때문에 그 자리에 비어 있지 않은 다른 값을 넣어주어야 한다.
+     * */
     public void remove(String key) {
         int hash = getHash(key);
         int index = convertToIndex(hash);

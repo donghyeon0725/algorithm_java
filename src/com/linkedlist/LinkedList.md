@@ -35,7 +35,7 @@ Linkedlist
 -
 [LinkedListTest.java](../speedTest/LinkedListTest.java "LinkedListTest.java")
 
-링크드 리스트 구현
+링크드 리스트 구현 방법
 -
 ```java
 public class Node {

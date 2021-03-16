@@ -20,9 +20,16 @@ import com.linkedlist.LinkedList;
  * */
 public class ChainingHashTable<T> {
     private int capacity;
+    /**
+     * 데이터를 저장할 배열을 생성
+     * 해시값으로 얻은 인덱스가 충돌의 경우를 대비해서 LinkedList로 생성을 한다.
+     */
     LinkedList[] hashtable = null;
 
-
+    /**
+     * 데이터를 저장하는 구조이다.
+     * 고유 식별 값인 해시와 데이터를 저장하는 공간이다.
+     * */
     private class Slot<N> {
         int hash = 0;
         N value = null;
@@ -38,7 +45,10 @@ public class ChainingHashTable<T> {
         this.hashtable = new LinkedList[capacity];
     }
 
-    public int getHash(String key) {
+    /**
+     * 값을 식별할 해쉬값을 얻는다.
+     * */
+    private int getHash(String key) {
         int hashCode = 0;
         for(char c : key.toCharArray()) {
             // 아스키 코드를 모두 더한 값을 해시값으로 사용한다.
@@ -47,11 +57,17 @@ public class ChainingHashTable<T> {
         return hashCode;
     }
 
-    public int convertToIndex(int hash) {
+    /**
+     * 해시값을 인덱스로 변환한다.
+     * */
+    private int convertToIndex(int hash) {
         return hash % capacity;
     }
 
-    public Slot<T> searchSlot(LinkedList<Slot> list, int hash) {
+    /**
+     * 인덱스를 통해 찾은 LinkedList에서 슬롯을 찾아온다.
+     * */
+    private Slot<T> searchSlot(LinkedList<Slot> list, int hash) {
         if (list == null) return null;
         Slot slot = null;
         for (int i=0; i<list.size(); i++) {
@@ -63,6 +79,14 @@ public class ChainingHashTable<T> {
         return null;
     }
 
+    /**
+     * 데이터를 삽입한다.
+     *
+     * 1. 해시값을 받는다.
+     * 2. 인덱스로 변환해서 얻은 주소로 접근한다.
+     * 3. 접근한 주소에 값이 없으면 링크드 리스트를 생성하고 있으면, 슬롯을 찾는다.
+     * 4. 중복되는 키 값이면 덮어쓰기, 아닌 경우 그냥 추가
+     * */
     public void put(String key, T data) {
         int hash = getHash(key);
         int index = convertToIndex(hash);
@@ -81,7 +105,10 @@ public class ChainingHashTable<T> {
         }
     }
 
-
+    /**
+     * 인덱스로 링크드리스트를 찾고
+     * 찾은 링크드 리스트에서 슬롯을 찾아 data를 반환한다.
+     * */
     public T get(String key) {
         int hash = getHash(key);
         int index = convertToIndex(hash);
@@ -99,6 +126,10 @@ public class ChainingHashTable<T> {
         }
     }
 
+    /**
+     * 인덱스를 먼저 찾고
+     * 찾은 링크드리스트에 동일한 해시값을 가진 슬롯이 있으면 제거
+     * */
     public void remove(String key) {
         int hash = getHash(key);
         int index = convertToIndex(hash);
