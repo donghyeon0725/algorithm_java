@@ -62,18 +62,18 @@ ex) 요리 레시피
 
 자료구조
 -
-* [배열 (Array)](./src/com/array/array.md "배열")
-* [큐 (Queue)](./src/com/queue/queue.md "큐")
-* [스택 (Stack)](./src/com/stack/stack.md "스택")
-* [링크드리스트 (Linkedlist)](./src/com/linkedlist/LinkedList.md "링크드리스트")
-* [해시테이블 (Hashtable)](./src/com/hashtable/HashTable.md "해시테이블")
-* [트리 (Tree)](./src/com/tree/tree.md "트리")
-* [힙 (Heap)](./src/com/heap/heap.md "힙")
+* [배열 (Array)](src/com/dataType/array/README.md "배열")
+* [큐 (Queue)](src/com/dataType/queue/README.md "큐")
+* [스택 (Stack)](src/com/dataType/stack/README.md "스택")
+* [링크드리스트 (Linkedlist)](src/com/dataType/linkedlist/README.md "링크드리스트")
+* [해시테이블 (Hashtable)](src/com/dataType/hashtable/README.md "해시테이블")
+* [트리 (Tree)](src/com/dataType/tree/README.md "트리")
+* [힙 (Heap)](src/com/dataType/heap/README.md "힙")
 
 알고리즘
 -
-* [정렬 (Sort)](./src/com/sort/sort.md "정렬")
-* [재귀호출 (recursive)](./src/com/recursive/recursive.md "재귀호출")
+* [정렬 (Sort)](src/com/algorithm/sort/README.md "정렬")
+* [재귀호출 (recursive)](src/com/algorithm/recursive/README.md "재귀호출")
 
 문제풀이
 -
@@ -87,7 +87,7 @@ ex) 요리 레시피
 
 비교 실험
 -
-1. [LinkedList VS ArrayList](./src/com/speedTest/ListSpeedTest.md "LinkedList VS ArrayList")
+1. [LinkedList VS ArrayList](src/com/dataType/speedTest/README.md "LinkedList VS ArrayList")
 
 
 알고리즘 공부가 왜 필요한지?
