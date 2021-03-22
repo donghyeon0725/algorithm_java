@@ -74,9 +74,7 @@ ex) 요리 레시피
 -
 * [정렬 (Sort)](src/com/algorithm/sort/README.md "정렬")
 * [재귀호출 (recursive)](src/com/algorithm/recursive/README.md "재귀호출")
-
-문제풀이
--
+* [탐색 (search)](src/com/algorithm/search/README.md "탐색")
 
 
 비교표
