@@ -315,6 +315,105 @@ public class DFS {
         queue.add(idx);
     }
 
+    /* 인접 행렬을 이용한 깊이 우선 탐색 */
+    static int[][] graph = new int[10][10];
+    static boolean[] visitedGraph = new boolean[10];
 
+    /**
+     * 인접 행렬 그래프를 이용한 깊이 우선 탐색
+     * */
+    static void search(int here) {
+        visitedGraph[here] = true;
+
+        for (int there=0; there<visitedGraph.length; there++) {
+            boolean isThereEdge = graph[here][there] == 1;
+
+            if (!visitedGraph[there] && isThereEdge) {
+                search(there);
+            }
+        }
+    }
+
+    /**
+     * 인접 행렬 그래프 초기화
+     * */
+    static void initGraph() {
+        for (int i=0; i<visitedGraph.length; i++) {
+            visitedGraph[i] = false;
+        }
+
+        graph[0][1] = 1;
+        graph[0][9] = 1;
+
+        graph[1][0] = 1;
+        graph[1][2] = 1;
+        graph[1][3] = 1;
+        graph[1][5] = 1;
+        graph[1][7] = 1;
+
+        graph[2][1] = 1;
+        graph[2][3] = 1;
+        //graph[2][4] = 1;
+        graph[2][5] = 1;
+
+        graph[3][1] = 1;
+        graph[3][2] = 1;
+
+        //graph[4][2] = 1;
+
+        graph[5][1] = 1;
+        graph[5][2] = 1;
+        graph[5][6] = 1;
+
+        graph[6][5] = 1;
+
+        graph[7][1] = 1;
+        graph[7][8] = 1;
+        graph[7][9] = 1;
+
+        graph[8][7] = 1;
+
+        graph[9][7] = 1;
+        graph[9][0] = 1;
+    }
+
+    /**
+     * 인접 행렬 그래프 전체 탐색
+     * */
+    static void searchAll() {
+        for (int i=0; i<graph.length; i++) {
+            if (!visitedGraph[i]) search(i);
+        }
+    }
+
+    /**
+     * 인접 행렬 그래프에서 두 점이 이어져 있는지 확인
+     * */
+    static void isTwoConnected() {
+        initGraph();
+
+        search(0);
+
+        for (int i=0; i<visitedGraph.length; i++) {
+            System.out.println(visitedGraph[i]);
+        }
+    }
+
+    /**
+     * 인접 행렬 그래프에서 부분 집합의 개수를 세는 문제
+     * */
+    static void countPieceOfGraph() {
+        initGraph();
+
+        int s=0;
+        for (int i=0; i<graph.length; i++) {
+            if (!visitedGraph[i]) {
+                s++;
+                search(i);
+            }
+        }
+
+        System.out.println(s);
+    }
 
 }
