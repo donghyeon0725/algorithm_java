@@ -17,6 +17,7 @@ public abstract class Heap<T> {
      * 시간 복잡도는 2logn으로 성능이 나오는 편이다.
      * */
     private final int HEAP_MEMORY_SIZE = Integer.MAX_VALUE / 100000;
+    // 정렬 기준 => 최대값, 최소값
     private HEAP_TYPE type = null;
     private T[] list = null;
     private Heap() {}
@@ -31,10 +32,13 @@ public abstract class Heap<T> {
     /**
      * 추상 메소드
      *
-     * 비교 기준을 외부에서 주입 받는다.
+     * 비교 기준(대소)을 외부에서 주입 받는다.
      * */
     public abstract int compareTo(T t1, T t2);
 
+    /**
+     *
+     * */
     public void insert(T value) {
         int lastIdx = getSize();
         if (lastIdx < 1) {
@@ -71,6 +75,9 @@ public abstract class Heap<T> {
         list[i1] = t;
     }
 
+    /**
+     * 힙
+     * */
     public int getSize() {
         int result = 0;
         for( int i=0; i<list.length; i++ ) {

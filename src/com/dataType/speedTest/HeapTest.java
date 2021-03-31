@@ -7,7 +7,7 @@ public class HeapTest {
         Heap<Account> heap = new Heap<Account>(Heap.HEAP_TYPE.MAX) {
             @Override
             public int compareTo(Account t1, Account t2) {
-                return t1.getOrder() - t2.getOrder();
+                return t1.getId() - t2. getId();
             }
         };
 
@@ -38,7 +38,7 @@ public class HeapTest {
             else if (i < 8-1) dept = 3;
             else if (i < 16-1) dept = 4;
 
-            System.out.println("depth : " + dept + " / 순서 : " + heap.get(i).getOrder() + ",   아이디 : " + heap.get(i).getId());
+            System.out.println("depth : " + dept + " / 아이디 : " + heap.get(i).getId() + ",   이름 : " + heap.get(i).getName());
         }
     }
 }

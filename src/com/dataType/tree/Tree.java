@@ -6,17 +6,17 @@ public abstract class Tree<T> {
      * 연결 관계를 표시한 것이다.
      * */
     class Node<T> {
+        // 실제 데이터
         private T data;
+        // 좌측 노드 (주소)
         private Node left;
+        // 우측 노드 (주소)
         private Node right;
+
+
         public Node(T value) {
             this.data = value;
         }
-
-        // equals 구현 한 뒤에 호출하기
-        // hashCode 구현하기
-        // comparable 을 받아서 좌우 노드를 구분함
-        /* 비교하기 */
 
         public T getData() {
             return data;
@@ -63,7 +63,7 @@ public abstract class Tree<T> {
         // 첫 노드를 기준으로
         Node<T> parent = this.root;
         while (parent != null) {
-            // 부모 노드보다 작은 경우
+            // 부모 노드보다 작은 경우 좌측 노드를 기준으로 다시 찾는다.
             if (this.compareTo(parent.getData(), newNode.getData()) > 0) {
                 parent = parent.getLeft();
             } else if (this.compareTo(parent.getData(), newNode.getData()) < 0) {
@@ -93,6 +93,8 @@ public abstract class Tree<T> {
     private Node<T> getNode(T value) {
         Node<T> newNode = new Node<>(value);
         Node<T> parent = this.root;
+
+        // 부모 노드가 있으면 반복 => leafNode를 찾는 과정
         while (parent != null) {
             if (this.compareTo(parent.getData(), newNode.getData()) > 0) {
                 parent = parent.getLeft();
@@ -110,11 +112,16 @@ public abstract class Tree<T> {
      * 비교값을 비교해서 노드를 찾으면 그 이전에 찾았던 노드를 반환 하고 없으면 null
      * */
     private Node<T> getParentNode(T value) {
+        // 찾으려는 부모노드의 자식 노드
         Node<T> newNode = new Node<>(value);
+        // 부모노드가 담길 공간
         Node<T> parent = this.root;
+        // 부모노드를 잠시 저장해둘 공간
         Node<T> target = this.root;
+
         while (parent != null) {
             if (this.compareTo(parent.getData(), newNode.getData()) > 0) {
+                // 부모 노드를 잠시 저장해둠
                 target = parent;
                 parent = parent.getLeft();
             } else if (this.compareTo(parent.getData(), newNode.getData()) < 0) {
@@ -131,6 +138,7 @@ public abstract class Tree<T> {
      * 값을 비교해서 왼쪽 또는 오른쪽에 노드를 연결한다.
      * */
     public void insert(T value) {
+        // 받은 값을 통해서 노드를 생성
         Node<T> newNode = new Node(value);
 
         //노드가 비어있을 때
@@ -140,6 +148,7 @@ public abstract class Tree<T> {
         }
 
         Node<T> parent = this.root;
+
         while (parent != null) {
             // 부모 노드보다 작은 경우
             if (this.compareTo(parent.getData(), newNode.getData()) > 0) {
@@ -180,14 +189,13 @@ public abstract class Tree<T> {
         Node<T> parent = getParentNode(value);
         Node<T> target = getNode(value);
 
-
         //노드를 찾지 못한 경우
         if (parent == null) {
             return;
         }
 
         boolean isRight = parent.getRight() == target;
-        //둘다 없는 경우
+        // 둘다 없는 경우
         if (target.getLeft() == null && target.getRight() == null) {
             if (isRight)    parent.setRight(null);
             else            parent.setLeft(null);
@@ -201,9 +209,11 @@ public abstract class Tree<T> {
         }
         else if (target.getRight() == null) {
             Node<T> child = target.getLeft();
+
             if (isRight)    parent.setRight(child);
             else            parent.setLeft(child);
-            // 둘다 빈값이 아닌 경우
+
+        // 좌우 둘다 빈값이 아닌 경우
         } else {
             //우측에서 가장 작은 값을 찾음
             Node<T> smallerNode = target.getRight();
@@ -212,6 +222,7 @@ public abstract class Tree<T> {
             }
 
             smallerNode.setLeft(target.getLeft());
+
             if (isRight)    parent.setRight(target.getRight());
             else            parent.setLeft(target.getRight());
         }
@@ -219,14 +230,17 @@ public abstract class Tree<T> {
 
     }
 
+    /**
+     * 디버깅 용도로 사용
+     * */
     public void display(T value) {
         Node<T> node = getNode(value);
 
         T r = node.getRight() != null ? (T)node.getRight().getData() : null;
         T l = node.getLeft() != null ? (T)node.getLeft().getData() : null;
 
-        System.out.println("우측 자식 : " + (r != null ? r.toString() : null));
         System.out.println("좌측 자식 : " + (l != null ? l.toString() : null));
+        System.out.println("우측 자식 : " + (r != null ? r.toString() : null));
     }
 
 }

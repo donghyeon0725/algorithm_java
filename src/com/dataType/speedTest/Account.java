@@ -1,35 +1,37 @@
 package com.dataType.speedTest;
 
 public class Account {
-    private String id;
-    private int order;
+    private String name;
+    private int id;
 
-    public Account(String id, int order) {
+    public Account(String name, int id) {
+        this.name = name;
         this.id = id;
-        this.order = order;
     }
 
-    public String getId() {
+    public String getName() {
+        return name;
+    }
+
+    public Account setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public Account setId(int id) {
         this.id = id;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
+        return this;
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
-                ", order=" + order +
+                "name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

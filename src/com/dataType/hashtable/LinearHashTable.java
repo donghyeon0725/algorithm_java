@@ -20,7 +20,9 @@ public class LinearHashTable<T> {
     private int capacity;
     Slot<T>[] hashtable = null;
 
-
+    /**
+     * 슬롯 객체
+     * */
     private class Slot<N> {
         int hash = 0;
         N value = null;

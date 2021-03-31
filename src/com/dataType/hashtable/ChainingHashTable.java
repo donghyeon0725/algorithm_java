@@ -40,6 +40,11 @@ public class ChainingHashTable<T> {
         }
     }
 
+    /**
+     * 생성자를 통해서 저장 공간의 크기를 정한다.
+     *
+     * 슬롯을 더 많이 사용할 수록 해시 충돌이 적어서, 접근이 빠르다.
+     * */
     public ChainingHashTable(int capacity) {
         this.capacity = capacity;
         this.hashtable = new LinkedList[capacity];
@@ -65,7 +70,7 @@ public class ChainingHashTable<T> {
     }
 
     /**
-     * 인덱스를 통해 찾은 LinkedList에서 슬롯을 찾아온다.
+     * 인덱스를 통해 찾은 LinkedList에서 hash 값을 비교하여 슬롯을 찾아온다.
      * */
     private Slot<T> searchSlot(LinkedList<Slot> list, int hash) {
         if (list == null) return null;
@@ -95,6 +100,7 @@ public class ChainingHashTable<T> {
             hashtable[index] = new LinkedList<T>();
         }
 
+        // 슬롯을 찾는다.
         Slot<T> slot = searchSlot(hashtable[index], hash);
 
         if (slot == null) {
