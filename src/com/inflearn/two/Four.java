@@ -19,10 +19,12 @@ public class Four {
         nums[0] = 1;
         nums[1] = 1;
 
+        // 피보나치 수열을 만든다.
         for (int i=2; i<n; i++) {
             nums[i] = nums[i-1] + nums[i-2];
         }
 
+        // 피보나치 수열을 출력한다.
         for (int i=0; i<n; i++) {
             if (i < n-1) {
                 System.out.print(nums[i] + " ");
@@ -45,13 +47,16 @@ public class Four {
         int b2 = 1;
         int temp = 0;
 
+        // 첫 두개의 숫자를 먼저 출력한다.
         System.out.print(1 + " " + 1 + " ");
 
+        // n보다 2 작은 값(기본값 제외)까지 반복
         for (int i=0; i<n-2; i++) {
             temp = b2;
             b2 += b1;
             b1 = temp;
 
+            // 마지막 출력의 경우 공백 없이 출력이 되어야 함
             if (i < n-3) {
                 System.out.print(b2 + " ");
             } else {
