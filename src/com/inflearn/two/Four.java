@@ -45,14 +45,13 @@ public class Four {
 
         int b1 = 1;
         int b2 = 1;
-        int temp = 0;
 
         // 첫 두개의 숫자를 먼저 출력한다.
         System.out.print(1 + " " + 1 + " ");
 
         // n보다 2 작은 값(기본값 제외)까지 반복
         for (int i=0; i<n-2; i++) {
-            temp = b2;
+            int temp = b2;
             b2 += b1;
             b1 = temp;
 
