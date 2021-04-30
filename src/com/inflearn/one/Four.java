@@ -1,5 +1,7 @@
 package com.inflearn.one;
 
+import java.util.Arrays;
+
 /**
  * 단어 뒤집기
  *
@@ -26,6 +28,50 @@ package com.inflearn.one;
  * doog
  * emiT
  * giB
+ *
  * */
 public class Four {
+
+    public static String solution(String str) {
+        char[] arr = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i=arr.length-1; i>=0; i--) {
+            sb.append(arr[i]);
+        }
+
+        return sb.toString();
+    }
+
+    public static String solution_1(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    public static String solution_2(String str) {
+        char[] arr = str.toCharArray();
+
+        int left = 0, right = arr.length-1;
+
+        // 좌우에서 양 끝 배열 값을 교체
+        while (left < right) {
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+
+        return new String(arr);
+    }
+
+    public static void main(String[] args) {
+        String[] arr = {"good", "Time", "Big"};
+
+        for (String s : arr) {
+            System.out.println(solution(s));
+            System.out.println(solution_1(s));
+            System.out.println(solution_2(s));
+        }
+
+    }
 }
