@@ -12,7 +12,7 @@ Queue
 -
 * FIFO (First In First Out) 구조로 되어 있다.
 
-![FIFO 구조](./FIFO.png)
+![FIFO 구조](./img/FIFO.png)
 
 종류
 -
