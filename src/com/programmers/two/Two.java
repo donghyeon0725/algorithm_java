@@ -24,18 +24,21 @@ public class Two {
 
         int max = 0;
 
-        // 현재 대상 로그가 끝나는 시점으로 부터 1초 구간에 n 개의 시작시간이 들어오는지 검사
+        // 현재 대상 로그가 끝나는 시점으로 부터 1초 구간에 로그 시작시간이 들어 오는지 검사
         for (int i=0; i<dates.size(); i++) {
             int size = 1;
 
+            // 로그 끝 시간 1초 이후
             LocalDateTime endRangeOfTime = LocalDateTime.parse(dates.get(i).split(" ")[0]).plus(Duration.ofSeconds(1L));
+
+            // 최대 범위 => 이 이후의 시간은 검사할 필요 없음 (로그의 최대 처리 시간은 3초이기 때문)
             LocalDateTime maxRangeOfTime = LocalDateTime.parse(dates.get(i).split(" ")[0]).plus(Duration.ofSeconds(3L));
 
             for (int j=i+1; j<dates.size(); j++) {
+                // 실행시간
+                int runningTime = (int)(1000 * Float.parseFloat(dates.get(j).split(" ")[1].replace("s", ""))) - 1;
 
-                int seconds = (int)(1000 * Float.parseFloat(dates.get(j).split(" ")[1].replace("s", ""))) - 1;
-
-                LocalDateTime startTime = LocalDateTime.parse(dates.get(j).split(" ")[0]).minus(Duration.ofMillis(seconds));
+                LocalDateTime startTime = LocalDateTime.parse(dates.get(j).split(" ")[0]).minus(Duration.ofMillis(runningTime));
                 if (endRangeOfTime.isAfter(startTime))
                     size++;
 
@@ -53,17 +56,22 @@ public class Two {
     public int solution1(String[] lines) {
         int max = 0;
 
-        // 현재 대상 로그가 끝나는 시점으로 부터 1초 구간에 다음 로그의 시작시간이 들어오는지 검사
+        // 현재 대상 로그가 끝나는 시점으로 부터 1초 구간에 로그 시작시간이 들어 오는지 검사
         for (int i=0; i<lines.length; i++) {
 
             int size = 1;
+
+            // 로그 끝 시간 1초 이후
             LocalDateTime endRangeOfTime = LocalDateTime.parse(lines[i].replaceFirst(" ", "T").split(" ")[0]).plus(Duration.ofSeconds(1L));
+
+            // 최대 범위 => 이 이후의 시간은 검사할 필요 없음 (로그의 최대 처리 시간은 3초이기 때문)
             LocalDateTime maxRangeOfTime = LocalDateTime.parse(lines[i].replaceFirst(" ", "T").split(" ")[0]).plus(Duration.ofSeconds(3L));
 
             for (int j=i+1; j<lines.length; j++) {
 
                 int runningTime = (int)(1000 * Float.parseFloat(lines[j].split(" ")[2].replace("s", ""))) - 1;
                 LocalDateTime target = LocalDateTime.parse(lines[j].replaceFirst(" ", "T").split(" ")[0]).minus(Duration.ofMillis(runningTime));
+
                 if (endRangeOfTime.isAfter(target))
                     size++;
 
@@ -81,13 +89,13 @@ public class Two {
 
     public int solution2(String[] lines) {
         // 초단위로 환산
-        Double[] times = new Double[lines.length];
+        Double[] endTimes = new Double[lines.length];
         Double[] runningTime = new Double[lines.length];
 
         for (int i=0; i<lines.length; i++) {
             String time = lines[i].split(" ")[1];
 
-            times[i] = Double.parseDouble(time.split(":")[0]) * 3600 + Double.parseDouble(time.split(":")[1]) * 60 + Double.parseDouble(time.split(":")[2]);
+            endTimes[i] = Double.parseDouble(time.split(":")[0]) * 3600 + Double.parseDouble(time.split(":")[1]) * 60 + Double.parseDouble(time.split(":")[2]);
 
             runningTime[i] = Double.parseDouble(lines[i].split(" ")[2].replace("s", ""));
         }
@@ -96,18 +104,18 @@ public class Two {
         int max = 0;
 
         // 현재 대상 로그가 끝나는 시점으로 부터 1초 구간에 n 개의 시작시간이 들어오는지 검사
-        for (int i=0; i<times.length; i++) {
+        for (int i=0; i<endTimes.length; i++) {
             int size = 1;
-            Double currentTime = times[i] + 1.000;
-            Double maxTime = currentTime + 3.000;
+            Double endRangeOfTime = endTimes[i] + 1.000;
+            Double maxRangeOfTime = endRangeOfTime + 3.000;
 
-            for (int j=i+1; j<times.length; j++) {
+            for (int j=i+1; j<endTimes.length; j++) {
 
-                Double target = times[j] - (runningTime[j] - 0.001);
-                if (currentTime > target)
+                Double target = endTimes[j] - (runningTime[j] - 0.001);
+                if (endRangeOfTime > target)
                     size++;
 
-                if (maxTime < target)
+                if (maxRangeOfTime < target)
                     break;
             }
 
@@ -183,10 +191,12 @@ public class Two {
             return endTime - runningTime + 0.001;
         }
 
+        // 다른 로그의 시작 시간이 로그 수집 시간 범위에 들어가는지 계산
         public boolean isInRange(Log log) {
             return this.getEndRangeTime() > log.getStart();
         }
 
+        // 다른 로그의 시작 시간이 로그 수집 최대 시간 범위에 들어가는지 계산
         public boolean isOutMaxRange(Log log) {
             return this.getMax() < log.getStart();
         }
