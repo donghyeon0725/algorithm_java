@@ -8,20 +8,13 @@ import java.util.stream.Collectors;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/43236
- *
- *
- * 정렬을 하고
- * 바위의 지점이 아니라, 바위 사이 거리의 집합으로 배열을 바꾸면
- * 이 중 최소 값을 선택해서 바위를 제거한다고 가정하고
- * 양쪽 중에 더 짧은 거리와 합쳐야 합니다.
- *
  * */
 public class Three {
     /**
-     * 정렬을 하고
-     * 바위의 지점이 아니라, 바위 사이 거리의 집합으로 배열을 바꾸면
-     * 이 중 최소 값을 선택해서 바위를 제거한다고 가정하고
-     * 양쪽 중에 더 짧은 거리와 합쳐야 합니다.
+     * 바위 위치를 거리로 정렬을 한 뒤,
+     * 바위 사이 거리를 모은 배열을 구하고
+     * 그 사이 거리가 가장 짧은 것 부터 순서대로 바위를 제거하는 방법
+     * 좌측과 우측의 바위중에 더 짧은 거리에 있는 바위와 합치기로 결정
      * */
     public int solution(int distance, int[] rocks, int n) {
         Arrays.sort(rocks);
