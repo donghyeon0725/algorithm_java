@@ -37,16 +37,6 @@ public class Five {
         dfs(triangle, deep + 1, index + 1, cur + triangle[deep][index]);
     }
 
-    /**
-     * 좌측 노드에서 내려온 경우
-     * 우측 노드에서 내려온 경우
-     * <p>
-     * max[d][i] = max[d-1][i] + triangle[d][i]
-     * max[d][i] = max[d-1][i-1] + triangle[d][i]
-     * <p>
-     * 이 수중에, 최대 값만 선택하면 그만 (최대가 아닌 값은 버려도 됨)
-     * 현재 탐색하려는 층의 노드 개수 만큼 배열을 만들어 탐색
-     */
     public int solution1(int[][] triangle) {
         int[][] max = new int[triangle.length][0];
         max[0] = new int[]{triangle[0][0]};
@@ -94,13 +84,14 @@ public class Five {
      * ...
      * n층은 길이 n + 1
      * <p>
-     * 현재 n층을 탐색한다고 가정하고 i번 째 노드까지 합을 node[n][i]라고 하면 다음과 같이 표현 가능
+     * n층의 i번째 노드까지의 합을 node[n][i]라고 하고
+     * n 층의 i 번째 노드까지의 최대 값을 max[n][i] 라고 하면 다음과 같이 표현 가능
      * <p>
      * <p>
-     * 촤측 위 노드에서 내려온 경우  : node[n][i] = m[n-1][i-1] + node[n][i]
-     * 우측 위 노드에서 내려온 경우  : node[n][i] = m[n-1][i] + node[n][i]
+     * 촤측 위 노드에서 내려온 경우 : node[n][i] = max[n-1][i-1] + node[n][i]
+     * 우측 위 노드에서 내려온 경우  : node[n][i] = max[n-1][i] + node[n][i]
      * <p>
-     * 최대 값을 max[n][i]이라고 하면 우측 위에서 내려온 경우와 좌측 위에서 내려온 경우 중, 최대 값만 있으면 되기 때문에 다음과 같이 표현 가능
+     * 우측 위에서 내려온 경우와 좌측 위에서 내려온 경우 중, 최대 값만 있으면 되기 때문에 다음과 같이 표현 가능
      * <p>
      * max[n][i] = Math.max(m[n-1][i-1] + node[n][i], m[n-1][i] + node[n][i])
      * <p>
@@ -113,6 +104,8 @@ public class Five {
      * node[n][0] = node[n - 1][0]
      * => 우측 끝 노드 값인 경우 (n 층의 max 인덱스는 n)
      * node[n][n] = node[n - 1][n - 1]
+     *
+     * n 번째 층의 노드 개수는 n 이고 별도로 배열을 만들 필요 없이 주어진 triangle 에 값을 쌓으면 되기 때문에 다음과 같이 리펙토링이 가능하다.
      */
     public int solution2(int[][] triangle) {
 
