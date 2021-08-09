@@ -1,6 +1,26 @@
 package com.programmers.one;
 
 public class Eight {
+    /**
+     * 우측 아래로만 갈 수 있기 때문에
+     *
+     * 만약 하나의 칸을 node 라고 부르고 x, y 좌표의 node를
+     * node[y][x] 라고 나타낼 때 node[y][x] 까지의 경로의 개수를 t 개라고 하면
+     *
+     * 장애물이 없다고 가정을 할 때
+     * 위 노드까지 경로의 경우의 수 + 좌측 노드까지 경로의 경우의 수
+     * node[y][x] = node[y-1][x] + node[y][x-1]
+     *
+     *
+     * 위에서 부터 1줄 한줄 한줄 풀어 내려오면 이 문제를 쉽게 풀 수 있음
+     * 예를 들어서 다음과 같이 경로가 있다고 할 때
+     *
+     * 집 1 1 1
+     * 1  0 1  2
+     * 1  1  2 4
+     *
+     * 이렇게 계산이 됩니다.
+     * */
     public int solution(int m, int n, int[][] puddles) {
 
         int[][] node = new int[n][m];
