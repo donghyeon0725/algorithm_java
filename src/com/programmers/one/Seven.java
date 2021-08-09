@@ -83,14 +83,80 @@ public class Seven {
     }
 
 
+    /**
+     * 너비 우선 탐색 시작
+     *
+     * 시작 문자열을 기준으로 변환할 수 있는 모든 문자열을 찾고
+     * 탐색해서, 가장 처음 target 으로 변환된 경로를 찾으면 된다.
+     * */
+    public int solution1(String begin, String target, String[] words) {
+
+        int result = 0;
+
+        boolean[] visit = new boolean[words.length];
+
+        Queue<Node> searchList = new LinkedList<>();
+        searchList.add(new Node(begin, 0));
+
+        while (!searchList.isEmpty()) {
+
+            Node searched = searchList.poll();
+
+            if (searched.getStr().equals(target)) {
+                result = searched.getDepth();
+                break;
+            }
+
+            for (int i=0; i<words.length; i++)
+                if (!visit[i] && searched.isThereEdge(words[i])) {
+                    visit[i] = true;
+                    searchList.add(new Node(words[i], searched.getDepth() + 1));
+                }
+
+        }
+
+        return result;
+    }
+
+    static class Node {
+        private String str;
+        private int depth;
+
+        public Node(String str, int depth) {
+            this.str = str;
+            this.depth = depth;
+        }
+
+        public String getStr() {
+            return str;
+        }
+
+        public int getDepth() {
+            return depth;
+        }
+
+        public boolean isThereEdge(String target) {
+            int deff = 0;
+
+            for (int i=0; i<str.length(); i++) {
+                if (str.charAt(i) != target.charAt(i))
+                    deff++;
+            }
+
+            return deff == 1;
+        }
+    }
+
+
+
     public static void main(String[] args) {
         Seven seven = new Seven();
 
         String begin = "hit";
         String target = "cog";
 
-        String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
+        String[] words = {"hot", "dot", "dog", "lot", "log"};
 
-        System.out.println("seven = " + seven.solution(begin, target, words));
+        System.out.println("seven = " + seven.solution1(begin, target, words));
     }
 }
