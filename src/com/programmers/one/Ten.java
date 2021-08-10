@@ -13,7 +13,7 @@ public class Ten {
         for (int i=2; i<=n; i++) {
             last += last + 1;
             // 처음 출발할 때는 여분의 기둥이 목적지로 보면 이전 경로와 동일하게 움직일 수 있다.
-            hanoi = changeRestAndDestination(hanoi) + "ac" + changeRestAndStart(hanoi);
+            hanoi = change(hanoi, 0) + "ac" + change(hanoi, 1);
         }
 
         int[][] answer = new int[last][];
@@ -25,21 +25,13 @@ public class Ten {
         return answer;
     }
 
-    public String changeRestAndDestination(String target) {
-        char[] box = {'a', 'c', 'b'};
+    public String change(String target, int t) {
+        char[][] box = {{'a', 'c', 'b'}, {'b', 'a', 'c'}};
+
         StringBuilder sb = new StringBuilder();
 
         for (char c : target.toCharArray())
-            sb.append(box[c % 97]);
-        return sb.toString();
-    }
-
-    public String changeRestAndStart(String target) {
-        char[] box = {'b', 'a', 'c'};
-        StringBuilder sb = new StringBuilder();
-
-        for (char c : target.toCharArray())
-            sb.append(box[c % 97]);
+            sb.append(box[t][c % 97]);
         return sb.toString();
     }
 
