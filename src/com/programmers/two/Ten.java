@@ -36,6 +36,7 @@ public class Ten {
             else if (Type.DOWN.equals(command.type))
                 buffer += command.getSpec();
             else if (Type.RESTORE.equals(command.type)) {
+                flushAndClear();
                 restore();
             }
         }
