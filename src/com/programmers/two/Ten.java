@@ -63,7 +63,7 @@ public class Ten {
         }
 
         // 마지막 인덱스 찾기
-        private void resetIndex() {
+        private void resetCursor() {
             int cursor = this.cursor;
             int i = 1;
 
@@ -90,7 +90,7 @@ public class Ten {
             deleted.add(cursor);
             memory[cursor] = -1;
 
-            resetIndex();
+            resetCursor();
         }
 
         private boolean isDeletedIndex(int i) {
