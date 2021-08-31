@@ -9,6 +9,7 @@ public class Bag {
         int capacity = 30;
         int worth = 0;
         Integer[][] all = {{20, 10}, {15, 12}, {10,10}, {25, 8}, {30, 5}};
+        Map<Integer[], Integer> map = new HashMap<>();
 
         // 정렬은 1일 경우 앞에 나온 수가 되로 간다는 점만 기억하기
         Queue<Integer[]> goodsQueue = Arrays.stream(all).sorted((s1, s2) -> {
@@ -25,18 +26,20 @@ public class Bag {
             if (capacity > goods[0]) {
                 capacity -= goods[0];
                 worth += goods[1];
+                map.put(goods, 100);
             } else {
                 // 남은 무게만큼
                 int rest =  (int)(capacity / (double) goods[0] * 100);
                 capacity = 0;
                 worth += goods[1] * rest / 100;
+                map.put(goods, rest);
                 break;
             }
         }
 
-
-
         System.out.println(worth);
+        for (Integer[] key : map.keySet())
+            System.out.println("key : " + Arrays.toString(key) + ", value : " + map.get(key));
 
         // round 반올림
         // floor 내림
