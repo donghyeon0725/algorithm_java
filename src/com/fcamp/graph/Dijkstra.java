@@ -92,6 +92,9 @@ public class Dijkstra {
         while (!queue.isEmpty()) {
             Integer[] search = queue.poll();
 
+            if (search[1] > min[search[0]])
+                continue;
+
             // 인접 노드 탐색
             for (int i=0; i<graph[search[0]].size(); i++) {
                 Integer[] vertex = graph[search[0]].get(i);
