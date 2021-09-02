@@ -28,25 +28,25 @@ public class DisjoinSet {
         // union
         public void union(int a, int b) {
 
-            int rootA = findRoot(a);
-            int rootB = findRoot(b);
+            // 기존 값 그대로 사용하는 스킬
+            a = findRoot(a);
+            b = findRoot(b);
 
-            // 높이가 동일 하면 rank 증가가 있음
-            if (rank[rootA] == rank[rootB]) {
-                parent[rootB] = rootA;
-                rank[rootA]++;
-                size[rootA] += size[rootB];
-                return;
+            if (a == b) return;
+
+            // a 에 높은 랭크가 오도록 정렬
+            if (rank[b] > rank[a]) {
+                int temp = a;
+                a = b;
+                b = temp;
             }
 
-            // rank 비교 후 더 낮은 곳으로
-            if (rank[rootA] > rank[rootB]) {
-                parent[rootB] = rootA;
-                size[rootA] += size[rootB];
-            } else {
-                parent[rootA] = rootB;
-                size[rootB] += size[rootA];
-            }
+            // 더 낮은 높은 랭크가 root
+            parent[b] = a;
+            size[a] += size[b];
+
+            if (rank[a] == rank[b])
+                rank[a]++;
         }
 
         // 이 부분을 재귀 함수로도 만들 수 있음

@@ -9,7 +9,6 @@ public class Kruskal {
         private int[] rank;
 
         // 초기화
-
         public DisjointSet(int size) {
             this.parent = new int[size];
             this.rank = new int[size];
@@ -18,24 +17,24 @@ public class Kruskal {
                 parent[i] = i;
         }
 
-
         // union
         public void union(int a, int b) {
-            int pa = findParent(a);
-            int pb = findParent(b);
+            a = findParent(a);
+            b = findParent(b);
 
+            if (a == b) return;
 
-            // 랭크가 같으면
-            if (rank[pa] == rank[pb]) {
-                parent[pa] = pb;
-                rank[pb]++;
-                return;
+            // a 에 높은 랭크가 오도록 정렬
+            if (rank[b] > rank[a]) {
+                int temp = a;
+                a = b;
+                b = temp;
             }
 
-            if (rank[pa] > rank[pb])
-                parent[pa] = pb;
-            else
-                parent[pb] = pa;
+            // 더 낮은 높은 랭크가 root
+            parent[b] = a;
+            if (rank[a] == rank[b])
+                rank[a]++;
         }
 
         // find
@@ -60,8 +59,11 @@ public class Kruskal {
                     edges.add(new Integer[]{graph[start][end], start, end});
             }
         }
+
+        // 간선을 기준으로 정렬한다.
         edges = edges.stream().sorted((a, b) -> a[0] - b[0]).collect(Collectors.toCollection(LinkedList::new));
 
+        // 사이클 여부 확인용 set
         DisjointSet set = new DisjointSet(edges.size());
 
         while (!edges.isEmpty()) {
