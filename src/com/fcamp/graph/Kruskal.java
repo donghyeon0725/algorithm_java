@@ -45,7 +45,7 @@ public class Kruskal {
         // getParent
         public int findParent(int a) {
             if (parent[a] == a) return a;
-            return findParent(parent[a]);
+            return parent[a] = findParent(parent[a]);
         }
     }
 

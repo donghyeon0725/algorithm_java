@@ -64,7 +64,7 @@ public class DisjoinSet {
         // 부모 노드를 찾아오는 메소드
         public int findRoot(int n) {
             if (n == parent[n]) return n;
-            return findRoot(parent[n]);
+            return parent[n] = findRoot(parent[n]);
         }
 
         public int getMaxSize() {
