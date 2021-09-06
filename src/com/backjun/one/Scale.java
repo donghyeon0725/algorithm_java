@@ -27,4 +27,26 @@ public class Scale {
         else
             return "descending";
     }
+
+    public static String solution1(int[] arr) {
+
+        boolean isAscending = true;
+        boolean isDescending = true;
+
+        for (int i=0; i<arr.length - 1; i++) {
+
+            if (arr[i + 1] > arr[i])
+                isDescending = false;
+            if (arr[i + 1] < arr[i])
+                isAscending = false;
+        }
+
+
+        if (isAscending)
+            return "ascending";
+        else if (isDescending)
+            return "descending";
+        else
+            return "mixed";
+    }
 }
