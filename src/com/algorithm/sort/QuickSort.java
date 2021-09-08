@@ -40,7 +40,7 @@ public class QuickSort {
                 // i가 end보다 작을 때까지만, array[i]가 피벗보다 큰은 것을 발견하면 그만 둠
                 i++;
             }
-            while (j > start && array[j] >= pivot) {
+            while (j > start && array[j] > pivot) {
                 // j가 start 보다 클 때까지만, array[j]가 피벗보다 작은면 그 때 그만 둠
                 j--;
             }
