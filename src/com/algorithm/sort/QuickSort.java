@@ -34,9 +34,9 @@ public class QuickSort {
         int pivot = array[start];
         int i=start+1,j=end;
 
-        while(i < j) { // 엇갈리면 그만 둠
+        while(i <= j) { // 엇갈리면 그만 둠
 
-            while (i < end && array[i] <= pivot) {
+            while (i <= end && array[i] <= pivot) {
                 // i가 end보다 작을 때까지만, array[i]가 피벗보다 큰은 것을 발견하면 그만 둠
                 i++;
             }
@@ -57,6 +57,6 @@ public class QuickSort {
             }
         }
         quickSort(array, start, j-1);
-        quickSort(array, i, end);
+        quickSort(array, j + 1, end);
     }
 }
