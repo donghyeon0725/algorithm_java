@@ -12,7 +12,6 @@ public class SequenceSum {
         int result = 0;
         int offset = 0;
 
-
         while (result != n && l < 101) {
 
             // N 을 L 으로 나눈 수에서 L 만큼 뺀 수 부터 탐색을 시작한다.
