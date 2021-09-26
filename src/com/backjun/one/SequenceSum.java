@@ -18,6 +18,7 @@ public class SequenceSum {
             int start = ((n / l) - l > 0 ? (n / l) - l : 0) + offset;
             result = l * (l + 1) / 2 + (start - 1) * l;
 
+
             // 찾은 경우
             if (result == n) {
                 break;
