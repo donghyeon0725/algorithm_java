@@ -5,6 +5,6 @@ package com.programmers;
  * */
 public class AnimalWhereNameIsNull {
     public static void main(String[] args) {
-        String sql = "SELECT  ANIMAL_ID from ANIMAL_INS where name is NULL order by ANIMAL_ID asc";
+        String sql = "SELECT  ANIMAL_ID FROM ANIMAL_INS WHERE NAME IS NULL ORDER BY ANIMAL_ID ASC";
     }
 }
