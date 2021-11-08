@@ -28,7 +28,7 @@ public class Disjoint_set {
         void merge(int u, int v) {
             u = find(u); v = find(v);
 
-            // 이미 같은 노드에 속하는 경우
+            // 이미   같은 노드에 속하는 경우
             if (u == v) return;
             parent[u] = v;
         }
