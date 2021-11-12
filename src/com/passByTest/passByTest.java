@@ -2,7 +2,7 @@ package com.passByTest;
 
 public class passByTest {
     public static void main(String[] args) {
-        System.out.println("자바는 pass by value 입니다. 다만 아래와 같은 결과가 나오는 이유는, 객체의 주소를 복사해서 넘겨주기 때문이다.");
+        System.out.println("자바는 pass by value 입니다. 다만 아래와 같은 결과가 나오는  이유는, 객체의 주소를 복사해서 넘겨주기 때문이다.");
         Model model = new Model("A");
 
         modify1(model);
