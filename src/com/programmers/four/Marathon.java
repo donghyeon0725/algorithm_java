@@ -3,6 +3,9 @@ package com.programmers.four;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/42576
+ * */
 public class Marathon {
     public String solution(String[] participant, String[] completion) {
 
